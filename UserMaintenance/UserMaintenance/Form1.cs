@@ -21,6 +21,7 @@ namespace UserMaintenance
             label1.Text = Resource.FullName;
             button1.Text = Resource.Add;
             button2.Text = Resource.FileWriting;
+            button3.Text = Resource.Remove;
 
 
             listBox1.DataSource = users;
@@ -41,7 +42,7 @@ namespace UserMaintenance
         {
             SaveFileDialog dialog = new SaveFileDialog();
 
-            if(dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(dialog.FileName);
                 foreach (User user in users)
@@ -51,5 +52,14 @@ namespace UserMaintenance
                 sw.Close();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                users.RemoveAt(listBox1.SelectedIndex);
+            }
+        }
+
     }
 }
